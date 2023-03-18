@@ -9,6 +9,9 @@ hdr = {
     }
 
 animes = []
+
+# print(Fore.YELLOW)
+# user = input('Your My Anime List Username please: ')
 with req.get('https://api.myanimelist.net/v2/users/' + config['user'] + '/animelist?status=plan_to_watch&limit=500&fields=synopsis', headers=hdr) as r:
     for node in json.loads(r.text)['data']:
         animes.append({'title' : node['node']['title'], 'id' : node['node']['id'], 'synopsis': node['node']['synopsis']})
