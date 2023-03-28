@@ -1,2 +1,3 @@
 #ignorar arquivo de configuração
 config.json
+.venv
