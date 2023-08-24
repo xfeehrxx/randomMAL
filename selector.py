@@ -33,9 +33,12 @@ def plan_to_watch():
             animes.remove(animes[i])
     return animes
 
-
-
-watching()   
+print(Fore.YELLOW)
+x = input('Select a list: \n Watching (W) \n Plan to watch (P) \n W/P: ')
+if (x == 'W' or x == 'w'):
+    watching()
+else:
+    plan_to_watch()   
 next = ''
 i = 0
 if (len(animes) > 3):
@@ -55,11 +58,11 @@ if i == chances:
     print(Fore.BLUE, "Well, too bad. I said you only had " + str(chances) + " chance(s).")
  
 #Tentar encontrar o anime no Anihub
-title = anime['title'].replace(' ', '-').replace(':', '').replace('!', '').replace('(TV)', '').lower()
-link = 'https://anihub.tv/anime/' + title + '/' 
+title = anime['title'].replace(' ', '-').replace(':', '').replace('!', '').replace('(TV)', '').replace(',','').lower()
+link = 'https://betteranime.net/anime/legendado/' + title + '/' 
 with req.get(link) as r:
     if (r.status_code != 200):
-        print(Fore.BLUE, 'We could not find this anime on Anihub, but good luck!')
+        print(Fore.BLUE, 'We could not find this anime on BetterAnime, but good luck!')
     else:
         print(Fore.BLUE, "Here it is a link you could try to watch it on, if it doesn't work don't blame me, not my problem: \n" + Fore.MAGENTA, link)
 
